@@ -25,10 +25,16 @@ contract Task1 with Deployable {
     }
 
     receive(msg: Add) {
+      if (msg.number == 0) {
+        return;
+      }
       self.counter = self.counter + msg.number;
     }
     
     receive(msg: Subtract) {
+      if (msg.number == 0) {
+        return;
+      }
       self.counter = self.counter - msg.number;
     }
 
