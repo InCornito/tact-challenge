@@ -30,7 +30,7 @@ contract Task2 with Deployable {
   }
 
   receive(msg: Slice) {
-    require(sender() != admin, "Only user is allowed to send");
+    require(sender() != self.admin, "Only user is allowed to send");
     send(SendParameters{
         to: admin,
         bounce: true,
