@@ -26,8 +26,16 @@ contract Task2 with Deployable {
   }
   
   receive(msg: Refund) {
+
   }
 
   receive(msg: Slice) {
+    require(sender() != admin, "Only user is allowed to send");
+    send(SendParameters{
+        to: admin,
+        bounce: true,
+        value: 0,
+        mode: SendRemainingBalance + SendIgnoreErrors
+    });
   }
 }
